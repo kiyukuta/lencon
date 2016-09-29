@@ -7,3 +7,7 @@ from models import len_init
 LenInit = len_init.LenInitLateAttn
 LenEmb = len_emb.LenEmbLateAttn
 EncoderDecoder = attention.EncDecLateAttn
+
+EncDecEarlyAttn = attention.EncDecEarlyAttn
+LenInitEarlyAttn = len_init.LenInitEarlyAttn
+LenEmbEarlyAttn= len_emb.LenEmbEarlyAttn

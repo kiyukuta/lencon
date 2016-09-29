@@ -20,6 +20,54 @@ def get_attention_components(attention_type, dim_hid):
             'ch': linear}
 
 
+class EncDecEarlyAttn(EncoderDecoder):
+    """Attention mechanism inspired by [Bahdanau+15]
+    """
+
+    def __init__(self,
+                 src_vcb_num,
+                 trg_vcb_num,
+                 dim_emb,
+                 dim_hid,
+                 attention_type='concat'):
+
+        super().__init__(src_vcb_num,
+                         trg_vcb_num,
+                         dim_emb,
+                         dim_hid)
+
+        atten_components = get_attention_components(attention_type, dim_hid)
+        for k, v in atten_components.items():
+            self.add_link(k, v)
+
+        self.attention_type = attention_type
+
+    def prepare_attention(self, train=True):
+        c = False if self.attention_type == 'dot' else True
+        source_hiddens = self.encoder.get_source_states(concat=c)
+        self.attender.set_source_info(source_hiddens, self.mask, train=train)
+
+    def prepare_decoding(self, state, lengths, train=True):
+        self.prepare_attention(train=train)
+        return state
+
+    def decode_once(self, x, state, train=True):
+
+        h = state['h']
+        c = state['c']
+
+        emb = self.trg_emb(x)
+
+        a = self.attender(h, train=train)
+        lstm_in = self.eh(emb) + self.hh(h) + self.ch(a)
+        c, h = F.lstm(c, lstm_in)
+        o = self.ho(h)
+        state['h'] = h
+        state['c'] = c
+
+        return o, state
+
+
 class EncDecLateAttn(EncoderDecoder):
     """Attention mechanism inspired by [Luong+15]
     """
