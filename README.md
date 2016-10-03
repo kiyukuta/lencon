@@ -9,7 +9,7 @@ There are three models (standard encdec, leninit, and lenemb) and
  four decoding methods (greedy, standard beamsearch, fixlen beamsearch, and fixrng
 beamsearch).
 
-Although any conbination is possible in prediction phase, please see `run_duc04.sh` for the conbination we used in the paper.
+Although any combination is possible in prediction phase, please see `run_duc04.sh` for the combination we used in the paper.
 
 ## Requirements
 
