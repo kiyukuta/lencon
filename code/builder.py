@@ -145,7 +145,7 @@ def reset(model_dir):
 
 def initiate(model_dir):
     configs = glob.glob(os.path.join(model_dir, '*.ini'))
-    assert len(configs) == 1, 'Put only one config file in the dierectory'
+    assert len(configs) == 1, 'Put only one config file in the directory'
     config = configs[0]
     b = Builder(config, model_dir)
 
