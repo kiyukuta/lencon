@@ -13,8 +13,8 @@ Although any combination is possible in prediction phase, please see `run_duc04.
 
 ## Requirements
 
-Please install [Chainer](https://github.com/pfnet/chainer) via pip.
-
+- [Chainer](https://github.com/pfnet/chainer)
+- python 3.5.1+
 
 ## Data preparation
 
