@@ -64,7 +64,7 @@ Each file has one title or article per line.
 N'th line of `train_trg_file` is a title of n'th line of `train_src_file` (corresponding article).
 
 See also https://github.com/facebookarchive/NAMAS#format-of-the-data-files
-- `#.#` in the above link indicates that every numbers is replaced to `#`
+- `#.#` in the above link indicates that every number is replaced to `#`
 
 
 
