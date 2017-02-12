@@ -23,6 +23,48 @@ which is an implementation of [\[Rush+15\]](http://www.aclweb.org/anthology/D15-
 
 Please see https://github.com/facebook/NAMAS#constructing-the-data-set for detail.
 
+### Preparing your own dataset
+
+You can modify the config files to run experiments in your own dataset.  
+For example in `lencon/models/XXX/config.ini`, you can see the following lines:
+```
+[Dataset]
+base_dir =  /path/to/agiga_work/
+src_vcb = %(base_dir)s/train.article.dict
+trg_vcb = %(base_dir)s/train.title.dict
+train_src_file = %(base_dir)s/train.article.txt
+train_trg_file = %(base_dir)s/train.title.txt
+valid_src_file = %(base_dir)s/valid.article.filter.txt
+valid_trg_file = %(base_dir)s/valid.title.filter.txt
+```
+Please replace each path to corresponding files of your dataset.
+
+
+#### Vocabulary list: `src_vcb` and `trg_vcb`
+Each file has one word per line.
+```txt
+<unk> 10000.0
+<s> 10000.0
+</s> 10000.0
+the 1230
+, 1120
+. 1110
+, 980
+a 970
+...
+```
+
+The first three words indicate the special tags for `unknown word`, `begin of sentence`, and `end of sentence`.
+The second column indicates the frequency of the word on the first column. 
+Note that we don't use this frequencies (second column) and you can remove it.
+
+#### Source and Target file: `train_src_file`, `train_trg_file`, `valid_src_file` and `valid_trg_file`
+Each file have one title or article per line.
+N'th line of `train_trg_file` is an title of n'th line of `train_src_file` (corresponding article).
+
+See also https://github.com/facebookarchive/NAMAS#format-of-the-data-files
+
+
 ## Training
 
 ```zsh
