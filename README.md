@@ -58,11 +58,15 @@ The first three words indicate the special tags for `unknown word`, `begin of se
 The second column indicates the frequency of the word on the first column. 
 Note that we don't use this frequencies (second column) and you can remove it.
 
+
 #### Source and Target file: `train_src_file`, `train_trg_file`, `valid_src_file` and `valid_trg_file`
 Each file have one title or article per line.
 N'th line of `train_trg_file` is an title of n'th line of `train_src_file` (corresponding article).
 
 See also https://github.com/facebookarchive/NAMAS#format-of-the-data-files
+- `#.#` in the above link indicates that every numbers are replaced to `#`
+
+
 
 
 ## Training
