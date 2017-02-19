@@ -93,4 +93,4 @@ python predict.py ../models/[Model] [input text file] [length you need] \
 
 + Yuta Kikuchi, Graham Neubig, Ryohei Sasano, Hiroya Takamura and Manabu Okumura  
 Controlling Output Length in Neural Encoder-Decoders  
-EMNLP 2016 (to appear)  ([arXiv](https://arxiv.org/abs/1609.09552))
+[EMNLP 2016](http://aclweb.org/anthology/D/D16/D16-1140.pdf), [bibtex](http://aclweb.org/anthology/D/D16/D16-1140.bib), ([arXiv](https://arxiv.org/abs/1609.09552))
